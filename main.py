@@ -31,5 +31,11 @@ class Aplicação:
         self.entryJuros = tk.Entry(root)
         self.entryJuros.place(relx= 0.65, rely= 0.2, relwidth= 0.2, relheight=0.05)
 
+        self.calcularSimples = tk.Button(root, text= "Calcular com Juros Simples")
+        self.calcularSimples.place(relx= 0.15, rely= 0.8, relwidth= 0.3, relheight=0.1)
+
+        self.calcularComposto = tk.Button(root, text= "Calcular com Juros Compostos")
+        self.calcularComposto.place(relx= 0.55, rely= 0.8, relwidth= 0.3, relheight=0.1)
+
 
 Aplicação()
