@@ -31,17 +31,23 @@ class Aplicação:
         self.entryJuros = tk.Entry(root)
         self.entryJuros.place(relx= 0.65, rely= 0.2, relwidth= 0.2, relheight=0.05)
 
-        self.labelResultado = tk.Label(root, bg= "#FFE8CD")
+        self.labelResultado = tk.Label(root, bg= "#FFE8CD", font= ('verdana', 20, 'bold'))
         self.labelResultado.place(relx = 0.2, rely= 0.4, relwidth= 0.6, relheight=0.2)
 
 
-        self.calcularSimples = tk.Button(root, text= "Calcular com Juros Simples")
+        self.calcularSimples = tk.Button(root, text= "Calcular com Juros Simples", command= self.jurosSimples)
         self.calcularSimples.place(relx= 0.15, rely= 0.8, relwidth= 0.3, relheight=0.1)
 
         self.calcularComposto = tk.Button(root, text= "Calcular com Juros Compostos")
         self.calcularComposto.place(relx= 0.55, rely= 0.8, relwidth= 0.3, relheight=0.1)
 
+    def jurosSimples(self):
+        self.capital = float(self.entryCapital.get())
+        self.juros = float(self.entryJuros.get())
+        self.tempo = float(self.entryTempo.get())
 
+        self.resultado = self.capital * (1 + self.juros * self.tempo)
+        self.labelResultado.config(text= f"R${self.resultado: .2f}")
 
 
 Aplicação()
