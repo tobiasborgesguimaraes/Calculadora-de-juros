@@ -1,9 +1,18 @@
 import tkinter as tk
+import logging
+
+logging.basicConfig(
+    filename= "basic.log",
+    level = logging.DEBUG,
+    format = "%(asctime)s %(levelname)s %(message)s",
+    datefmt = "%Y-%m-%d %H:%M:%S",
+)
 
 root = tk.Tk()
 
 class Aplicação:
     def __init__(self):
+        logging.info("Programa iniciou")
         self.root = root
         self.tela()
         self.widgets()
@@ -48,6 +57,7 @@ class Aplicação:
 
         self.resultado = self.capital * (1 + self.juros * self.tempo)
         self.labelResultado.config(text= f"R${self.resultado: .2f}")
+        logging.info(f"Calculado juros simples com (capital= R${self.capital}, juros= {self.juros}, tempo= {self.tempo}) e resultado R${self.resultado: .2f}")
 
     def jurosCompostos(self):
         self.capital = float(self.entryCapital.get())
@@ -56,5 +66,7 @@ class Aplicação:
 
         self.resultado = self.capital * ((1 + self.juros)**self.tempo)
         self.labelResultado.config(text= f"R${self.resultado: .2f}")
+        logging.info(f"Calculado juros compostos com (capital= R${self.capital}, juros= {self.juros}, tempo= {self.tempo}) e resultado R${self.resultado: .2f}")
+
 
 Aplicação()
